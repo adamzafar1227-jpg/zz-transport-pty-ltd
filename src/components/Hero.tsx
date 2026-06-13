@@ -25,7 +25,7 @@ export default function Hero() {
     <>
       <section
         id="home"
-        className="relative bg-[#07080A] text-white w-full pt-24 md:pt-24 pb-0 flex flex-col min-h-screen overflow-visible"
+        className="relative bg-[#07080A] text-white w-full pt-20 md:pt-24 pb-0 flex flex-col min-h-screen overflow-visible"
       >
       {/* Heavy textured/diagonal break background styling */}
       <div className="absolute inset-0 z-0 pointer-events-none opacity-20 bg-[radial-gradient(#1e293b_1px,transparent_1px)] [background-size:16px_16px]" />
@@ -35,9 +35,9 @@ export default function Hero() {
 
       {/* Main Grid Content */}
       <div
-        className="w-full flex items-center relative z-10 py-2 md:py-8 px-4 md:px-[60px] pt-4 md:pt-5 flex-1 max-w-full"
+        className="w-full flex items-center relative z-10 py-2 md:py-8 px-4 md:px-[60px] pt-4 md:pt-5 flex-1 max-w-full overflow-hidden"
       >
-        <div className="w-full flex flex-col md:flex-row md:flex-wrap items-start gap-y-6 md:gap-y-0">
+        <div className="w-full flex flex-col md:flex-row md:flex-wrap items-start gap-y-4 md:gap-y-0">
           
           {/* 1. HEADING STACK: order-1 on both mobile & desktop. 45% width on desktop */}
           <div className="relative flex flex-col items-start text-left z-10 w-full md:w-[45%] order-1 px-0">
@@ -48,12 +48,12 @@ export default function Hero() {
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8, ease: "easeOut" }}
             >
-              <h1 className="font-display font-[900] text-[52px] md:text-8xl tracking-tighter uppercase italic leading-[0.85] text-white">
+              <h1 className="font-display font-[900] text-[clamp(40px,12vw,80px)] md:text-8xl tracking-tighter uppercase italic leading-[0.85] text-white">
                 ZZ TRANSPORT
               </h1>
               
               {/* Secondary text - Brand Tagline (Gold) */}
-              <p className="font-display font-extrabold text-base md:text-2xl text-[#F5A623] tracking-wide uppercase italic mt-2 md:mt-3 ml-1">
+              <p className="font-display font-extrabold text-[16px] md:text-2xl text-[#F5A623] tracking-wide uppercase italic mt-2 md:mt-3 ml-1">
                 Your Trusted Logistics Partner
               </p>
             </motion.div>
@@ -100,7 +100,7 @@ export default function Hero() {
                 loading="eager"
                 fetchPriority="high"
                 decoding="async"
-                className="w-full h-[220px] md:h-auto object-contain bg-transparent border-none rounded-none shadow-none filter drop-shadow-[0_40px_80px_rgba(245,166,35,0.3)] will-change-transform"
+                className="w-full h-[200px] md:h-auto object-contain bg-transparent border-none rounded-none shadow-none filter drop-shadow-[0_40px_80px_rgba(245,166,35,0.3)] will-change-transform"
               />
 
             </motion.div>
@@ -109,7 +109,7 @@ export default function Hero() {
 
           {/* 3. GALLERY: order-3 on mobile (after truck), order-4 on desktop (below stats) */}
           <div className="w-full md:w-[45%] order-3 md:order-4 mt-6 md:mt-10 overflow-visible">
-            <div className="w-full max-w-[600px] mx-auto md:mx-0 h-[160px] md:h-[200px] overflow-visible">
+            <div className="w-full max-w-[600px] mx-auto md:mx-0 h-[150px] md:h-[200px] overflow-visible">
               <Gallery3D compact={true} />
             </div>
           </div>
