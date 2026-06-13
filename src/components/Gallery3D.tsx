@@ -54,8 +54,8 @@ export default function Gallery3D({ compact = false }: Gallery3DProps) {
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
-  const cardWidth = isMobile ? 220 : (compact ? 280 : 420);
-  const cardHeight = isMobile ? 140 : (compact ? 160 : 240);
+  const cardWidth = isMobile ? (window.innerWidth - 32) : (compact ? 280 : 420);
+  const cardHeight = isMobile ? 160 : (compact ? 160 : 240);
 
   // Auto-rotate logic: rotates every 3 seconds
   useEffect(() => {
@@ -110,7 +110,7 @@ export default function Gallery3D({ compact = false }: Gallery3DProps) {
       <div 
         className="relative w-full"
         style={{
-          height: isMobile ? '180px' : (compact ? '180px' : '260px'),
+          height: isMobile ? '160px' : (compact ? '180px' : '260px'),
           display: 'flex',
           justifyContent: 'center',
           perspective: isMobile ? '600px' : '1200px',
@@ -169,7 +169,7 @@ export default function Gallery3D({ compact = false }: Gallery3DProps) {
                 key={index}
                 className="absolute left-1/2 top-1/2 transition-all duration-800"
                 style={{
-                  display: isMobile ? (diff <= 1 ? 'block' : 'none') : 'block',
+                  display: isMobile ? (isActive ? 'block' : 'none') : 'block',
                   width: `${cardWidth}px`,
                   height: `${cardHeight}px`,
                   marginLeft: `${-(cardWidth / 2)}px`,
