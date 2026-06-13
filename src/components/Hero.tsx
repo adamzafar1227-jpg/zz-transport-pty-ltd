@@ -25,13 +25,7 @@ export default function Hero() {
     <>
       <section
         id="home"
-        className="relative bg-[#07080A] text-white w-full pt-20 sm:pt-24 pb-0"
-        style={{
-          display: 'flex',
-          flexDirection: 'column',
-          minHeight: '100vh',
-          overflow: 'visible',
-        }}
+        className="relative bg-[#07080A] text-white w-full pt-20 sm:pt-24 pb-0 flex flex-col min-h-screen overflow-visible"
       >
       {/* Heavy textured/diagonal break background styling */}
       <div className="absolute inset-0 z-0 pointer-events-none opacity-20 bg-[radial-gradient(#1e293b_1px,transparent_1px)] [background-size:16px_16px]" />
@@ -41,26 +35,18 @@ export default function Hero() {
 
       {/* Main Grid Content */}
       <div
-        className="w-full flex items-center relative z-10 py-6 lg:py-0"
-        style={{ 
-          maxWidth: '100%', 
-          paddingLeft: 60, 
-          paddingRight: 60, 
-          paddingTop: '20px',
-          flex: 1,
-        }}
+        className="w-full flex items-center relative z-10 py-6 lg:py-0 px-4 md:px-[60px] pt-5 flex-1 max-w-full"
       >
         <div className="w-full flex flex-col lg:flex-row items-center gap-12 lg:gap-8">
           
           {/* Left Column (Content & Technical Stats Grid) */}
-          <div className="relative flex flex-col items-start text-left z-10 w-full lg:w-[42%] lg:pl-[60px] px-0">
+          <div className="relative flex flex-col items-start text-left z-10 w-full lg:w-[42%] px-0 md:pl-[60px]">
             
             {/* Headline - "ZZ TRANSPORT" with italic massive impact font */}
             <motion.div
               initial={{ opacity: 0, x: -60 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8, ease: "easeOut" }}
-              className="relative"
             >
               <h1 className="font-display font-[900] text-5xl sm:text-7xl lg:text-[6rem] xl:text-[7rem] tracking-tighter uppercase italic leading-[0.85] text-white">
                 ZZ TRANSPORT
@@ -103,14 +89,10 @@ export default function Hero() {
             </div>
 
             {/* Integrated Gallery3D inside Hero */}
-            <div style={{
-              marginTop: '16px',
-              width: '100%',
-              maxWidth: '600px',
-              overflow: 'visible',
-              paddingTop: '10px',
-            }}>
-              <Gallery3D compact={true} />
+            <div className="mt-4 md:mt-10 w-full max-w-[600px] overflow-visible pt-2.5">
+              <Gallery3D 
+                compact={true} 
+              />
             </div>
 
           </div>
@@ -122,15 +104,7 @@ export default function Hero() {
               initial={{ opacity: 0, x: 150 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8, type: "spring", stiffness: 50 }}
-              style={{
-                display: 'flex',
-                alignItems: 'flex-end',
-                justifyContent: 'center',
-                position: 'relative',
-                width: '100%',
-                marginLeft: '-60px',
-                paddingBottom: '0',
-              }}
+              className="flex items-end justify-center relative w-full lg:ml-[-60px] pb-0"
             >
               {/* "SAFE | FAST | RELIABLE" callout label absolutely positioned OVER the truck image, top-right area */}
               <div className="absolute top-[2%] right-[2%] hidden sm:flex flex-col items-end z-25 pointer-events-none">
@@ -175,29 +149,27 @@ export default function Hero() {
         </div>
       </section>
 
-      <div style={{
-        width: '100%',
-        background: '#0A0A0A',
-        borderTop: '1px solid rgba(255,255,255,0.08)',
-        padding: '16px 60px',
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'space-between',
-      }}>
-        <p style={{ color: '#9CA3AF', fontSize: '13px', maxWidth: '400px' }}>
+      <div className="w-full bg-[#0A0A0A] border-t border-white/[0.08] px-6 md:px-[60px] py-8 md:py-4 flex flex-col md:flex-row items-center justify-between gap-6 md:gap-0">
+        <p className="text-[#9CA3AF] text-xs md:text-[13px] max-w-full md:max-w-[400px] text-center md:text-left leading-relaxed">
           All shipments are fully insured with real-time tracking and guaranteed on-time delivery across Australia.
         </p>
-        <div style={{ width: '1px', height: '40px', background: 'rgba(255,255,255,0.2)' }}></div>
+        <div className="hidden md:block w-px h-10 bg-white/20"></div>
         <button 
           onClick={() => navigate("#services")}
-          style={{ background: 'transparent', border: '1px solid #F5A623', borderRadius: '999px', padding: '10px 28px', color: '#FFFFFF', fontSize: '13px', letterSpacing: '2px', cursor: 'pointer' }}
+          className="w-full md:w-auto bg-transparent border border-[#F5A623] rounded-full px-8 py-3 md:py-2.5 text-white text-xs md:text-[13px] tracking-[2px] font-bold cursor-pointer hover:bg-[#F5A623] hover:text-black transition-all duration-300"
         >
           EXPLORE NOW →
         </button>
-        <div style={{ display: 'flex', gap: '16px' }}>
-          <a href="https://www.facebook.com/ZZ-Transport-710069642377823/" style={{ color: '#9CA3AF' }}>f</a>
-          <a href="#" style={{ color: '#9CA3AF' }}>t</a>
-          <a href="#" style={{ color: '#9CA3AF' }}>in</a>
+        <div className="hidden md:flex gap-4">
+          <a href="https://www.facebook.com/ZZ-Transport-710069642377823/" target="_blank" rel="noreferrer" className="text-gray-400 hover:text-[#F5A623] transition-colors">
+            Facebook
+          </a>
+          <a href="#" className="text-gray-400 hover:text-[#F5A623] transition-colors">
+            Twitter
+          </a>
+          <a href="#" className="text-gray-400 hover:text-[#F5A623] transition-colors">
+            LinkedIn
+          </a>
         </div>
       </div>
     </>
