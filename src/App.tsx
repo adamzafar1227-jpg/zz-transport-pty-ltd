@@ -3,6 +3,9 @@ import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import PageTransition, { TransitionProvider, useTransitionRouter } from "./components/PageTransition";
 
+const preloadImage = new Image();
+preloadImage.src = '/images/zz-truck.png';
+
 const Hero = lazy(() => import("./components/Hero"));
 const Services = lazy(() => import("./components/Services"));
 const Fleet = lazy(() => import("./components/Fleet"));

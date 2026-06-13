@@ -121,7 +121,7 @@ export default function Hero() {
                 <div className="flex items-center gap-1">
                   <div className="text-right">
                     <p className="text-[11px] text-gray-400 uppercase tracking-widest leading-none font-sans font-bold">ZZ Transport</p>
-                    <p className="text-4xl font-black font-display text-[#F5A623] leading-tight select-none mt-1">SAFE | FAST | RELIABLE</p>
+                    <p className="text-2xl font-black font-display text-[#F5A623] leading-tight select-none mt-1">SAFE | FAST | RELIABLE</p>
                   </div>
                   {/* Diagonal line indicator pointing to white container cargo */}
                   <svg width="110" height="60" className="pointer-events-none opacity-85" viewBox="0 0 110 60">
@@ -135,9 +135,11 @@ export default function Hero() {
               <img
                 src="/images/zz-truck.webp"
                 alt="ZZ Transport Truck"
+                loading="eager"
+                fetchPriority="high"
+                decoding="async"
                 style={{
-                  width: '90%',
-                  maxWidth: 'none',
+                  width: '100%',
                   height: 'auto',
                   objectFit: 'contain',
                   background: 'transparent',
@@ -145,6 +147,7 @@ export default function Hero() {
                   borderRadius: '0',
                   boxShadow: 'none',
                   filter: 'drop-shadow(0 40px 80px rgba(245,166,35,0.3))',
+                  willChange: 'transform',
                 }}
               />
 
