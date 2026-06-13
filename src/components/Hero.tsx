@@ -35,12 +35,12 @@ export default function Hero() {
 
       {/* Main Grid Content */}
       <div
-        className="w-full flex items-center relative z-10 py-6 lg:py-0 px-4 md:px-[60px] pt-5 flex-1 max-w-full"
+        className="w-full flex items-center relative z-10 py-6 md:py-0 px-4 md:px-[60px] pt-5 flex-1 max-w-full"
       >
-        <div className="w-full flex flex-col lg:flex-row items-center gap-12 lg:gap-8">
+        <div className="w-full flex flex-col md:flex-row md:flex-wrap items-center md:items-start gap-y-12 md:gap-y-0">
           
           {/* Left Column (Content & Technical Stats Grid) */}
-          <div className="relative flex flex-col items-start text-left z-10 w-full lg:w-[42%] px-0 md:pl-[60px]">
+          <div className="relative flex flex-col items-start text-left z-10 w-full md:w-[45%] order-1 px-0 md:pl-[60px]">
             
             {/* Headline - "ZZ TRANSPORT" with italic massive impact font */}
             <motion.div
@@ -88,26 +88,19 @@ export default function Hero() {
               ))}
             </div>
 
-            {/* Integrated Gallery3D inside Hero */}
-            <div className="mt-4 md:mt-10 w-full max-w-[600px] overflow-visible pt-2.5">
-              <Gallery3D 
-                compact={true} 
-              />
-            </div>
-
           </div>
 
           {/* Right Column (Massive yellow Volvo Freight Truck) */}
-          <div className="relative flex justify-center lg:justify-end items-center w-full lg:w-[55%]">
+          <div className="relative flex justify-center md:justify-end items-center w-full md:w-[55%] order-2 md:order-2 mt-8 md:mt-0">
             
             <motion.div
               initial={{ opacity: 0, x: 150 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8, type: "spring", stiffness: 50 }}
-              className="flex items-end justify-center relative w-full lg:ml-[-60px] pb-0"
+              className="flex items-end justify-center relative w-full md:ml-[-60px] pb-0"
             >
               {/* "SAFE | FAST | RELIABLE" callout label absolutely positioned OVER the truck image, top-right area */}
-              <div className="absolute top-[2%] right-[2%] hidden sm:flex flex-col items-end z-25 pointer-events-none">
+              <div className="absolute top-[2%] right-[2%] hidden md:flex flex-col items-end z-25 pointer-events-none">
                 <div className="flex items-center gap-1">
                   <div className="text-right">
                     <p className="text-[11px] text-gray-400 uppercase tracking-widest leading-none font-sans font-bold">ZZ Transport</p>
@@ -143,6 +136,15 @@ export default function Hero() {
 
             </motion.div>
 
+          </div>
+
+          {/* Gallery — shows below truck on mobile, below stats on desktop */}
+          <div className="w-full md:w-[45%] order-3 md:order-3 mt-8 md:mt-10 md:pl-[60px] overflow-visible pt-2.5">
+            <div className="w-full max-w-[600px] mx-auto md:mx-0">
+              <Gallery3D 
+                compact={true} 
+              />
+            </div>
           </div>
 
           </div>

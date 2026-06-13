@@ -131,7 +131,7 @@ export default function Navbar() {
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
             transition={{ duration: 0.3 }}
-            className="md:hidden bg-[#07080A]/95 backdrop-blur-md border-t border-white/[0.05] overflow-hidden"
+            className="md:hidden w-full bg-[#07080A]/95 backdrop-blur-md border-t border-white/[0.05] overflow-hidden"
             id="mobile-nav-drawer-container"
           >
             <div className="px-4 pt-3 pb-6 space-y-2">
