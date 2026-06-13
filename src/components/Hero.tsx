@@ -62,12 +62,12 @@ export default function Hero() {
               transition={{ duration: 0.8, ease: "easeOut" }}
               className="relative"
             >
-              <h1 className="font-display font-[900] text-5xl sm:text-7xl lg:text-[6rem] xl:text-[7rem] tracking-tighter uppercase italic leading-[0.85] text-white">
+              <h1 className="font-display font-[900] text-5xl sm:text-7xl lg:text-[6rem] xl:text-[7rem] tracking-tighter uppercase italic leading-[0.85] text-white hero-heading">
                 ZZ TRANSPORT
               </h1>
               
               {/* Secondary text - Brand Tagline */}
-              <p className="font-display font-extrabold text-base sm:text-xl text-[#F5A623] tracking-wide uppercase italic mt-3 ml-1">
+              <p className="font-display font-extrabold text-base sm:text-xl text-[#F5A623] tracking-wide uppercase italic mt-3 ml-1 hero-tagline">
                 Your Trusted Logistics Partner
               </p>
             </motion.div>
@@ -77,7 +77,7 @@ export default function Hero() {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 1, delay: 0.3 }}
-              className="font-sans text-xs sm:text-sm text-gray-400 mt-6 leading-relaxed w-full"
+              className="font-sans text-xs sm:text-sm text-gray-400 mt-6 leading-relaxed w-full hero-description"
             >
               From ocean freight to air cargo, ZZ Transport Pty Ltd delivers your goods safely across Perth, Melbourne and beyond. Reliable, fast and fully insured.
             </motion.p>
@@ -210,13 +210,29 @@ export default function Hero() {
           .hero-left-col {
             display: contents !important;
             order: 1 !important;
+            gap: 8px !important;
+            padding-top: 0 !important;
           }
           .hero-left-col > * {
             order: 1 !important;
           }
+          .hero-heading {
+            font-size: 18vw !important;
+            line-height: 0.9 !important;
+          }
+          .hero-tagline {
+            font-size: 5vw !important;
+            margin-top: 8px !important;
+          }
+          .hero-description {
+            margin-top: 12px !important;
+            font-size: 14px !important;
+          }
           .hero-right-col {
             width: 100% !important;
             order: 2 !important;
+            margin-top: 0 !important;
+            padding: 0 !important;
           }
           .hero-gallery-wrapper {
             order: 4 !important;
@@ -225,7 +241,8 @@ export default function Hero() {
             order: 5 !important;
           }
           .hero-truck-img {
-            height: 220px !important;
+            height: 280px !important;
+            width: 100% !important;
             object-fit: contain !important;
           }
         }
