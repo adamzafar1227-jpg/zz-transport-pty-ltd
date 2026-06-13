@@ -12,7 +12,7 @@ export default function Home() {
     <main>
       <Suspense fallback={<div className="bg-[#0A0A0A] min-h-screen" />}>
         <Hero />
-        <HomeWhyUs />
+        <HomeWhyUs style={{ marginTop: 0, paddingTop: 0 }} />
         <HomeHowItWorks />
         <HomeTestimonials />
         <HomeQuoteForm />

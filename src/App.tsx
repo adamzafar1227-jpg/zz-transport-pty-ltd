@@ -46,7 +46,7 @@ function ActivePage() {
       return (
         <>
           <Hero />
-          <HomeWhyUs />
+          <HomeWhyUs style={{ marginTop: 0, paddingTop: 0 }} />
           <HomeHowItWorks />
           <HomeTestimonials />
           <HomeQuoteForm />

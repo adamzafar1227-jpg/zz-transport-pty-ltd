@@ -93,7 +93,7 @@ export default function Hero() {
             </div>
 
             {/* Gallery 3D Integrated into Hero Left Column */}
-            <div className="w-full overflow-visible" style={{ marginTop: '16px', height: '260px', paddingBottom: '20px' }}>
+            <div className="w-full overflow-visible" style={{ marginTop: '16px', marginBottom: '40px', height: '260px', paddingBottom: '20px' }}>
               <Gallery3D />
             </div>
 
@@ -108,11 +108,12 @@ export default function Hero() {
               transition={{ duration: 0.8, type: "spring", stiffness: 50 }}
               style={{
                 display: 'flex',
-                alignItems: 'center',
+                alignItems: 'flex-end',
                 justifyContent: 'center',
                 position: 'relative',
                 width: '100%',
                 marginLeft: '-60px',
+                paddingBottom: '0',
               }}
             >
               {/* "SAFE | FAST | RELIABLE" callout label absolutely positioned OVER the truck image, top-right area */}
@@ -135,7 +136,7 @@ export default function Hero() {
                 src="/images/zz-truck.webp"
                 alt="ZZ Transport Truck"
                 style={{
-                  width: '100%',
+                  width: '90%',
                   maxWidth: 'none',
                   height: 'auto',
                   objectFit: 'contain',
