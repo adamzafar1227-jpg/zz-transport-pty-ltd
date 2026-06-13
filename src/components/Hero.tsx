@@ -41,19 +41,16 @@ export default function Hero() {
 
       {/* Main Grid Content */}
       <div
-        className="w-full flex items-center relative z-10 py-6 lg:py-0"
+        className="w-full flex items-center relative z-10 py-6 lg:py-0 px-4 lg:px-[60px]"
         style={{ 
           maxWidth: '100%', 
-          paddingLeft: 60, 
-          paddingRight: 60, 
-          paddingTop: '20px',
           flex: 1,
         }}
       >
-        <div className="w-full flex flex-col lg:flex-row items-center gap-12 lg:gap-8">
+        <div className="w-full flex flex-col lg:grid lg:grid-cols-[42%_55%] items-center gap-12 lg:gap-8">
           
-          {/* Left Column (Content & Technical Stats Grid) */}
-          <div className="relative flex flex-col items-start text-left z-10 w-full lg:w-[42%] lg:pl-[60px] px-0">
+          {/* Div A (Heading + Tagline + Description) - Order 1 on both */}
+          <div className="relative flex flex-col items-start text-left z-10 w-full px-0 order-1 lg:order-1 block">
             
             {/* Headline - "ZZ TRANSPORT" with italic massive impact font */}
             <motion.div
@@ -81,7 +78,64 @@ export default function Hero() {
             >
               From ocean freight to air cargo, ZZ Transport Pty Ltd delivers your goods safely across Perth, Melbourne and beyond. Reliable, fast and fully insured.
             </motion.p>
+          </div>
 
+          {/* Truck Div - Order 2 on both */}
+          <div className="relative flex justify-center lg:justify-end items-center w-full order-2 lg:order-2 lg:row-span-2">
+            
+            <motion.div
+              initial={{ opacity: 0, x: 150 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.8, type: "spring", stiffness: 50 }}
+              style={{
+                display: 'flex',
+                alignItems: 'flex-end',
+                justifyContent: 'center',
+                position: 'relative',
+                width: '100%',
+                marginLeft: '-60px',
+                paddingBottom: '0',
+              }}
+            >
+              {/* "SAFE | FAST | RELIABLE" callout label absolutely positioned OVER the truck image, top-right area */}
+              <div className="absolute top-[2%] right-[2%] hidden lg:flex flex-col items-end z-25 pointer-events-none">
+                <div className="flex items-center gap-1">
+                  <div className="text-right">
+                    <p className="text-[11px] text-gray-400 uppercase tracking-widest leading-none font-sans font-bold">ZZ Transport</p>
+                    <p className="text-2xl font-black font-display text-[#F5A623] leading-tight select-none mt-1">SAFE | FAST | RELIABLE</p>
+                  </div>
+                  {/* Diagonal line indicator pointing to white container cargo */}
+                  <svg width="110" height="60" className="pointer-events-none opacity-85" viewBox="0 0 110 60">
+                    <line x1="0" y1="10" x2="60" y2="10" stroke="#F5A623" strokeWidth="1.5" />
+                    <line x1="60" y1="10" x2="110" y2="60" stroke="#F5A623" strokeWidth="1.5" />
+                    <circle cx="110" cy="60" r="3" fill="#F5A623" />
+                  </svg>
+                </div>
+              </div>
+
+              <img
+                src="/images/zz-truck.webp"
+                alt="ZZ Transport Truck"
+                loading="eager"
+                fetchPriority="high"
+                decoding="async"
+                className="w-full h-[220px] lg:h-auto"
+                style={{
+                  objectFit: 'contain',
+                  background: 'transparent',
+                  border: 'none',
+                  borderRadius: '0',
+                  boxShadow: 'none',
+                  filter: 'drop-shadow(0 40px 80px rgba(245,166,35,0.3))',
+                  willChange: 'transform',
+                }}
+              />
+
+            </motion.div>
+          </div>
+
+          {/* Div B (Stats + Gallery) - Order 3 on mobile, Order 1 on desktop */}
+          <div className="relative flex flex-col items-start text-left z-10 w-full lg:pl-[60px] px-0 order-3 lg:order-1">
             {/* Technical Spec Info (2x2 Grid Layout matching the reference image) */}
             <div className="grid grid-cols-2 gap-x-12 gap-y-6 mt-10 w-full">
               {specs.map((spec, idx) => (
@@ -112,63 +166,6 @@ export default function Hero() {
             }}>
               <Gallery3D compact={true} />
             </div>
-
-          </div>
-
-          {/* Right Column (Massive yellow Volvo Freight Truck) */}
-          <div className="relative flex justify-center lg:justify-end items-center w-full lg:w-[55%]">
-            
-            <motion.div
-              initial={{ opacity: 0, x: 150 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.8, type: "spring", stiffness: 50 }}
-              style={{
-                display: 'flex',
-                alignItems: 'flex-end',
-                justifyContent: 'center',
-                position: 'relative',
-                width: '100%',
-                marginLeft: '-60px',
-                paddingBottom: '0',
-              }}
-            >
-              {/* "SAFE | FAST | RELIABLE" callout label absolutely positioned OVER the truck image, top-right area */}
-              <div className="absolute top-[2%] right-[2%] hidden sm:flex flex-col items-end z-25 pointer-events-none">
-                <div className="flex items-center gap-1">
-                  <div className="text-right">
-                    <p className="text-[11px] text-gray-400 uppercase tracking-widest leading-none font-sans font-bold">ZZ Transport</p>
-                    <p className="text-2xl font-black font-display text-[#F5A623] leading-tight select-none mt-1">SAFE | FAST | RELIABLE</p>
-                  </div>
-                  {/* Diagonal line indicator pointing to white container cargo */}
-                  <svg width="110" height="60" className="pointer-events-none opacity-85" viewBox="0 0 110 60">
-                    <line x1="0" y1="10" x2="60" y2="10" stroke="#F5A623" strokeWidth="1.5" />
-                    <line x1="60" y1="10" x2="110" y2="60" stroke="#F5A623" strokeWidth="1.5" />
-                    <circle cx="110" cy="60" r="3" fill="#F5A623" />
-                  </svg>
-                </div>
-              </div>
-
-              <img
-                src="/images/zz-truck.webp"
-                alt="ZZ Transport Truck"
-                loading="eager"
-                fetchPriority="high"
-                decoding="async"
-                style={{
-                  width: '100%',
-                  height: 'auto',
-                  objectFit: 'contain',
-                  background: 'transparent',
-                  border: 'none',
-                  borderRadius: '0',
-                  boxShadow: 'none',
-                  filter: 'drop-shadow(0 40px 80px rgba(245,166,35,0.3))',
-                  willChange: 'transform',
-                }}
-              />
-
-            </motion.div>
-
           </div>
 
           </div>
