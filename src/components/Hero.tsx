@@ -1,6 +1,7 @@
+import { useEffect } from "react";
 import { motion } from "framer-motion";
 import { useTransitionRouter } from "./PageTransition";
-import Gallery3D from "./Gallery3D";
+import Gallery3D, { images } from "./Gallery3D";
 
 export default function Hero() {
   const { navigate } = useTransitionRouter();
@@ -12,15 +13,24 @@ export default function Hero() {
     { label: "On-Time Rate", value: "99%" }
   ];
 
+  // Preload all gallery images for instantaneous rendering
+  useEffect(() => {
+    images.forEach(img => {
+      const image = new Image();
+      image.src = img.url;
+    });
+  }, []);
+
   return (
     <>
       <section
         id="home"
-        className="relative bg-[#07080A] text-white overflow-hidden w-full pt-20 sm:pt-24 pb-0"
+        className="relative bg-[#07080A] text-white w-full pt-20 sm:pt-24 pb-0"
         style={{
           display: 'flex',
           flexDirection: 'column',
           minHeight: '100vh',
+          overflow: 'visible',
         }}
       >
       {/* Heavy textured/diagonal break background styling */}
@@ -92,9 +102,15 @@ export default function Hero() {
               ))}
             </div>
 
-            {/* Gallery 3D Integrated into Hero Left Column */}
-            <div className="w-full overflow-visible" style={{ marginTop: '16px', marginBottom: '40px', height: '260px', paddingBottom: '20px' }}>
-              <Gallery3D />
+            {/* Integrated Gallery3D inside Hero */}
+            <div style={{
+              marginTop: '16px',
+              width: '100%',
+              maxWidth: '600px',
+              overflow: 'visible',
+              paddingTop: '10px',
+            }}>
+              <Gallery3D compact={true} />
             </div>
 
           </div>
