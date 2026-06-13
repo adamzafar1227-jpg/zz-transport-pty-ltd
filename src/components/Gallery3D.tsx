@@ -41,21 +41,13 @@ interface Gallery3DProps {
 }
 
 export default function Gallery3D({ compact = false }: Gallery3DProps) {
+  const cardWidth = compact ? 280 : 420;
+  const cardHeight = compact ? 160 : 240;
+
   const total = images.length;
   const [activeIndex, setActiveIndex] = useState(0);
   const [isHovered, setIsHovered] = useState(false);
-  const [isMobile, setIsMobile] = useState(false);
   const rotationTimer = useRef<NodeJS.Timeout | null>(null);
-
-  useEffect(() => {
-    const handleResize = () => setIsMobile(window.innerWidth < 768);
-    handleResize();
-    window.addEventListener("resize", handleResize);
-    return () => window.removeEventListener("resize", handleResize);
-  }, []);
-
-  const cardWidth = isMobile ? (window.innerWidth - 32) : (compact ? 280 : 420);
-  const cardHeight = isMobile ? 150 : (compact ? 160 : 240);
 
   // Auto-rotate logic: rotates every 3 seconds
   useEffect(() => {
@@ -91,9 +83,9 @@ export default function Gallery3D({ compact = false }: Gallery3DProps) {
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
       style={{
-        width: '100%',
-        marginLeft: '0',
-        padding: isMobile ? '0' : (compact ? '0' : '20px 0 40px 0'),
+        width: compact ? '100%' : '100vw',
+        marginLeft: compact ? '0' : 'calc(-50vw + 50%)',
+        padding: compact ? '0' : '20px 0 40px 0',
         background: compact ? 'transparent' : '#0A0A0A',
         marginTop: '0px',
       }}
@@ -110,17 +102,16 @@ export default function Gallery3D({ compact = false }: Gallery3DProps) {
       <div 
         className="relative w-full"
         style={{
-          height: isMobile ? '150px' : (compact ? '180px' : '260px'),
+          height: compact ? '180px' : '260px',
           display: 'flex',
           justifyContent: 'center',
-          perspective: isMobile ? '600px' : '1200px',
+          perspective: '1200px',
         }}
       >
         {/* Carousel Ring */}
         <div 
-          className="relative w-full h-full"
+          className="relative w-full h-full transition-transform duration-800"
           style={{ 
-            transition: 'transform 0.8s',
             transformStyle: "preserve-3d",
             transform: `rotateY(${-activeIndex * angleStep}deg)` 
           }}
@@ -146,8 +137,8 @@ export default function Gallery3D({ compact = false }: Gallery3DProps) {
               zIndexValue = 30;
               filterValue = "none";
             } else if (diff === 1) {
-              scaleValue = 0.7; 
-              opacityValue = 0.5;
+              scaleValue = 0.75; 
+              opacityValue = 0.60;
               zIndexValue = 20;
               filterValue = "blur(1px)";
             } else if (diff === 2) {
@@ -169,13 +160,13 @@ export default function Gallery3D({ compact = false }: Gallery3DProps) {
                 key={index}
                 className="absolute left-1/2 top-1/2 transition-all duration-800"
                 style={{
-                  display: isMobile ? (isActive ? 'block' : 'none') : 'block',
                   width: `${cardWidth}px`,
                   height: `${cardHeight}px`,
                   marginLeft: `${-(cardWidth / 2)}px`,
                   marginTop: `${-(cardHeight / 2)}px`,
+                  transformStyle: "preserve-3d",
                   // True 3D projection placement using rotateY & translateZ
-                  transform: `rotateY(${itemAngle}deg) translateZ(${isMobile ? 250 : 400}px) scale(${scaleValue})`,
+                  transform: `rotateY(${itemAngle}deg) translateZ(${compact ? 260 : 400}px) scale(${scaleValue})`,
                   opacity: opacityValue,
                   zIndex: zIndexValue,
                   backfaceVisibility: "visible",
@@ -234,7 +225,7 @@ export default function Gallery3D({ compact = false }: Gallery3DProps) {
           flexDirection: 'column',
           alignItems: 'center',
           justifyContent: 'center',
-          marginTop: isMobile ? '0px' : '16px',
+          marginTop: '16px',
           position: 'relative',
           zIndex: 10,
         }}
