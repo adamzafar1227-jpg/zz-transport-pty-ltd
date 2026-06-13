@@ -35,11 +35,11 @@ export default function Hero() {
 
       {/* Main Grid Content */}
       <div
-        className="w-full flex items-center relative z-10 py-2 md:py-0 px-4 md:px-[60px] pt-4 md:pt-5 flex-1 max-w-full"
+        className="w-full flex items-center relative z-10 py-2 md:py-8 px-4 md:px-[60px] pt-4 md:pt-5 flex-1 max-w-full"
       >
-        <div className="w-full flex flex-col md:flex-row md:flex-wrap items-start gap-y-4 md:gap-y-0">
+        <div className="w-full flex flex-col md:flex-row md:flex-wrap items-start gap-y-6 md:gap-y-0">
           
-          {/* LEFT COLUMN: Content (Heading, Tagline, Description) - order-1 on both mobile & desktop */}
+          {/* 1. HEADING STACK: order-1 on both mobile & desktop. 45% width on desktop */}
           <div className="relative flex flex-col items-start text-left z-10 w-full md:w-[45%] order-1 px-0">
             
             {/* Headline - "ZZ TRANSPORT" with italic massive impact font */}
@@ -69,8 +69,8 @@ export default function Hero() {
             </motion.p>
           </div>
 
-          {/* RIGHT COLUMN: Truck Image - order-2 on mobile (after content), order-2 on desktop (right side) */}
-          <div className="relative flex justify-center md:justify-end items-center w-full md:w-[55%] order-2 mt-2 md:mt-0 md:pl-6">
+          {/* 2. TRUCK IMAGE: order-2 on both. 55% width on desktop (floats right) */}
+          <div className="relative flex justify-center md:justify-end items-center w-full md:w-[55%] order-2 mt-4 md:mt-0 md:pl-8">
             
             <motion.div
               initial={{ opacity: 0, x: 150 }}
@@ -79,7 +79,7 @@ export default function Hero() {
               className="flex items-end justify-center relative w-full pb-0"
             >
               {/* "SAFE | FAST | RELIABLE" callout label absolutely positioned OVER the truck image, top-right area */}
-              <div className="absolute top-[2%] right-[2%] hidden md:flex flex-col items-end z-25 pointer-events-none">
+              <div className="absolute top-[2%] right-[2%] hidden lg:flex flex-col items-end z-25 pointer-events-none">
                 <div className="flex items-center gap-1">
                   <div className="text-right">
                     <p className="text-[11px] text-gray-400 uppercase tracking-widest leading-none font-sans font-bold">ZZ Transport</p>
@@ -107,15 +107,15 @@ export default function Hero() {
 
           </div>
 
-          {/* GALLERY: order-3 on mobile (after truck), order-4 on desktop (below stats in left column) */}
-          <div className="w-full md:w-[45%] order-3 md:order-4 mt-4 md:mt-6 overflow-visible">
+          {/* 3. GALLERY: order-3 on mobile (after truck), order-4 on desktop (below stats) */}
+          <div className="w-full md:w-[45%] order-3 md:order-4 mt-6 md:mt-10 overflow-visible">
             <div className="w-full max-w-[600px] mx-auto md:mx-0 h-[160px] md:h-[200px] overflow-visible">
               <Gallery3D compact={true} />
             </div>
           </div>
 
-          {/* STATS: order-4 on mobile (after gallery), order-3 on desktop (before gallery in left column) */}
-          <div className="w-full md:w-[45%] order-4 md:order-3 grid grid-cols-2 gap-4 mt-4 md:mt-6">
+          {/* 4. STATS GRID: order-4 on mobile (at bottom), order-3 on desktop (under desc) */}
+          <div className="w-full md:w-[45%] order-4 md:order-3 grid grid-cols-2 gap-x-8 gap-y-4 md:gap-y-8 mt-6 md:mt-12">
             {specs.map((spec, idx) => (
               <motion.div
                 key={idx}
