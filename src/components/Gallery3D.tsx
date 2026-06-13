@@ -8,44 +8,41 @@ interface GalleryItem {
   caption: string;
 }
 
-export default function Gallery3D() {
-  const images: GalleryItem[] = [
-    {
-      url: "https://static.wixstatic.com/media/ee3796_eb9aac8927e247ab8af6141a111a4005.jpg",
-      category: "FLEET",
-      caption: "ZZ Transport truck ZZ7 ready for container movements"
-    },
-    {
-      url: "https://static.wixstatic.com/media/41d000_bfd692b5db3dbcbcc774fe90af9bcbc1.jpg",
-      category: "OCEAN FREIGHT",
-      caption: "Container ship freight operations — Fremantle wharf"
-    },
-    {
-      url: "https://static.wixstatic.com/media/41d000_bd769439b7c0e9104c161bcbd6d72d9c.jpg",
-      category: "AIR FREIGHT",
-      caption: "Air freight collection and delivery — express service"
-    },
-    {
-      url: "https://static.wixstatic.com/media/ee3796_596c6a435d434e66b90f8c436061664a.jpg",
-      category: "STORAGE",
-      caption: "Unpack, store and transportation solutions"
-    },
-    {
-      url: "https://static.wixstatic.com/media/e2fc3825ed844c21af29770585d109f8.jpg",
-      category: "CONTAINER",
-      caption: "Container terminal operations — Perth Metro area"
-    },
-    {
-      url: "https://static.wixstatic.com/media/13374f8d1c11d68fbb4c4a4fb9fb0f95.jpg",
-      category: "CARGO",
-      caption: "Cargo handling — specialist freight solutions"
-    },
-    {
-      url: "https://static.wixstatic.com/media/c2a2be60ae6e1e97e231ddde94d28e16.jpg",
-      category: "OCEAN FREIGHT",
-      caption: "International cargo ship — container logistics"
-    }
-  ];
+export const images: GalleryItem[] = [
+  {
+    url: 'https://images.unsplash.com/photo-1601584115197-04ecc0da31d7?w=400&q=60',
+    category: 'FLEET',
+    caption: 'ZZ Transport truck ZZ7 ready for container movements'
+  },
+  {
+    url: 'https://images.unsplash.com/photo-1494412651409-8963ce7935a7?w=400&q=60',
+    category: 'OCEAN FREIGHT',
+    caption: 'Container ship freight operations — Fremantle wharf'
+  },
+  {
+    url: 'https://images.unsplash.com/photo-1474302770737-173ee21bab63?w=400&q=60',
+    category: 'AIR FREIGHT',
+    caption: 'Air freight collection and delivery — express service'
+  },
+  {
+    url: 'https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=400&q=60',
+    category: 'STORAGE',
+    caption: 'Unpack, store and transportation solutions'
+  },
+  {
+    url: 'https://images.unsplash.com/photo-1519003722824-194d4455a60c?w=400&q=60',
+    category: 'CONTAINER',
+    caption: 'Container terminal operations — Perth Metro area'
+  },
+];
+
+interface Gallery3DProps {
+  compact?: boolean;
+}
+
+export default function Gallery3D({ compact = false }: Gallery3DProps) {
+  const cardWidth = compact ? 280 : 420;
+  const cardHeight = compact ? 160 : 240;
 
   const total = images.length;
   const [activeIndex, setActiveIndex] = useState(0);
@@ -82,14 +79,34 @@ export default function Gallery3D() {
 
   return (
     <div 
-      className="relative w-full h-[280px] sm:h-[340px] overflow-visible"
+      className="relative overflow-visible"
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
+      style={{
+        width: compact ? '100%' : '100vw',
+        marginLeft: compact ? '0' : 'calc(-50vw + 50%)',
+        padding: compact ? '0' : '20px 0 40px 0',
+        background: compact ? 'transparent' : '#0A0A0A',
+        marginTop: '0px',
+      }}
     >
+      {/* Thin gold separator line - Hidden in compact mode */}
+      {!compact && <div style={{
+        width: '100%',
+        height: '1px',
+        background: 'linear-gradient(to right, transparent, #F5A623, transparent)',
+        marginBottom: '0',
+      }}/>}
+
       {/* 3D stage container */}
       <div 
-        className="relative w-full h-[220px] sm:h-[280px] flex items-center justify-center"
-        style={{ perspective: "1000px" }}
+        className="relative w-full"
+        style={{
+          height: compact ? '180px' : '260px',
+          display: 'flex',
+          justifyContent: 'center',
+          perspective: '1200px',
+        }}
       >
         {/* Carousel Ring */}
         <div 
@@ -120,17 +137,17 @@ export default function Gallery3D() {
               zIndexValue = 30;
               filterValue = "none";
             } else if (diff === 1) {
-              scaleValue = 0.85;
-              opacityValue = 0.70;
+              scaleValue = 0.75; 
+              opacityValue = 0.60;
               zIndexValue = 20;
               filterValue = "blur(1px)";
             } else if (diff === 2) {
-              scaleValue = 0.65;
-              opacityValue = 0.40;
+              scaleValue = 0.55; 
+              opacityValue = 0.35;
               zIndexValue = 10;
               filterValue = "blur(2px)";
             } else {
-              scaleValue = 0.45;
+              scaleValue = 0.35;
               opacityValue = 0.15;
               zIndexValue = 5;
               filterValue = "blur(4px)";
@@ -143,13 +160,13 @@ export default function Gallery3D() {
                 key={index}
                 className="absolute left-1/2 top-1/2 transition-all duration-800"
                 style={{
-                  width: "240px",
-                  height: "160px",
-                  marginLeft: "-120px",
-                  marginTop: "-80px",
+                  width: `${cardWidth}px`,
+                  height: `${cardHeight}px`,
+                  marginLeft: `${-(cardWidth / 2)}px`,
+                  marginTop: `${-(cardHeight / 2)}px`,
                   transformStyle: "preserve-3d",
                   // True 3D projection placement using rotateY & translateZ
-                  transform: `rotateY(${itemAngle}deg) translateZ(260px) scale(${scaleValue})`,
+                  transform: `rotateY(${itemAngle}deg) translateZ(${compact ? 260 : 400}px) scale(${scaleValue})`,
                   opacity: opacityValue,
                   zIndex: zIndexValue,
                   backfaceVisibility: "visible",
@@ -157,18 +174,28 @@ export default function Gallery3D() {
               >
                 {/* Visual card */}
                 <div 
-                  className={`relative w-full h-full rounded-xl overflow-hidden border transition-all duration-500 bg-[#111111] ${
+                  className={`relative w-full h-full overflow-hidden border transition-all duration-500 bg-[#111111] ${
                     isActive 
                       ? "border-[#F5A623] shadow-[0_0_30px_rgba(245,166,35,0.4)]" 
                       : "border-[#1F1F1F]"
                   }`}
-                  style={{ filter: filterValue }}
+                  style={{ 
+                    filter: filterValue,
+                    borderRadius: '12px'
+                  }}
                 >
                   {/* Actual image */}
                   <img
                     src={item.url}
                     alt={item.caption}
+                    loading="lazy"
                     className="w-full h-full object-cover select-none pointer-events-none"
+                    style={{
+                      width: '100%',
+                      height: '100%',
+                      objectFit: 'cover',
+                      objectPosition: 'center center',
+                    }}
                     referrerPolicy="no-referrer"
                   />
 
@@ -191,14 +218,20 @@ export default function Gallery3D() {
         </div>
       </div>
 
-      {/* Navigation overlay controls - Positioned absolute at bottom to prevent layout bleed */}
+      {/* Fix 2: Navigation controls positioned relatively BELOW the 3D stage */}
       <div 
-        className="absolute bottom-0 left-0 right-0 z-10 flex flex-col items-center justify-center gap-3"
-        style={{ marginBottom: '8px' }}
+        style={{
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'center',
+          justifyContent: 'center',
+          marginTop: '16px',
+          position: 'relative',
+          zIndex: 10,
+        }}
       >
-        
-        {/* Chevrons container */}
-        <div className="flex items-center gap-4">
+        {/* Arrow buttons container */}
+        <div style={{ display: 'flex', gap: '16px' }}>
           <button
             onClick={handlePrev}
             className="w-10 h-10 rounded-full border border-[#F5A623] text-[#F5A623] hover:bg-[#F5A623] hover:text-black hover:shadow-lg transition-all duration-300 flex items-center justify-center active:scale-90 cursor-pointer"
@@ -219,7 +252,11 @@ export default function Gallery3D() {
         </div>
 
         {/* Dot indicators below */}
-        <div className="flex items-center gap-2.5" id="gallery-dots-container">
+        <div 
+          className="flex items-center gap-2.5" 
+          style={{ marginTop: '12px' }}
+          id="gallery-dots-container"
+        >
           {images.map((_, idx) => {
             const isDotActive = idx === activeIndex;
             return (

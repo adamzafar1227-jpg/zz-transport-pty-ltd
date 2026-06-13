@@ -15,6 +15,29 @@ const HomeHowItWorks = lazy(() => import("./components/HomeHowItWorks"));
 const Coverage = lazy(() => import("./components/Coverage"));
 const HomeTestimonials = lazy(() => import("./components/HomeTestimonials"));
 const HomeQuoteForm = lazy(() => import("./components/HomeQuoteForm"));
+const Gallery3D = lazy(() => import("./components/Gallery3D"));
+
+function HomeSkeleton() {
+  return (
+    <div style={{
+      background: '#0A0A0A',
+      minHeight: '100vh',
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'center',
+    }}>
+      <div style={{
+        width: '60px',
+        height: '60px',
+        border: '3px solid #1A1A1A',
+        borderTop: '3px solid #F5A623',
+        borderRadius: '50%',
+        animation: 'spin 0.8s linear infinite',
+      }}/>
+      <style>{`@keyframes spin { to { transform: rotate(360deg); } }`}</style>
+    </div>
+  );
+}
 
 function ActivePage() {
   const { currentPath } = useTransitionRouter();
@@ -48,11 +71,15 @@ function ActivePage() {
     default:
       return (
         <>
-          <Hero />
-          <HomeWhyUs style={{ marginTop: 0, paddingTop: 0 }} />
-          <HomeHowItWorks />
-          <HomeTestimonials />
-          <HomeQuoteForm />
+          <Suspense fallback={<HomeSkeleton />}>
+            <Hero />
+          </Suspense>
+          <Suspense fallback={<div style={{ background: '#0A0A0A', height: '400px' }} />}>
+            <HomeWhyUs style={{ marginTop: 0, paddingTop: 0 }} />
+            <HomeHowItWorks />
+            <HomeTestimonials />
+            <HomeQuoteForm />
+          </Suspense>
         </>
       );
   }
