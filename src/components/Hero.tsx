@@ -120,8 +120,8 @@ export default function Hero() {
               <div className="absolute top-[2%] right-[2%] hidden sm:flex flex-col items-end z-25 pointer-events-none">
                 <div className="flex items-center gap-1">
                   <div className="text-right">
-                    <p className="text-[10px] text-gray-400 uppercase tracking-widest leading-none font-sans font-bold">ZZ Transport</p>
-                    <p className="text-xl font-bold font-display text-[#F5A623] leading-tight select-none mt-1">SAFE | FAST | RELIABLE</p>
+                    <p className="text-[11px] text-gray-400 uppercase tracking-widest leading-none font-sans font-bold">ZZ Transport</p>
+                    <p className="text-4xl font-black font-display text-[#F5A623] leading-tight select-none mt-1">SAFE | FAST | RELIABLE</p>
                   </div>
                   {/* Diagonal line indicator pointing to white container cargo */}
                   <svg width="110" height="60" className="pointer-events-none opacity-85" viewBox="0 0 110 60">
