@@ -1,5 +1,4 @@
 import { motion } from "framer-motion";
-import { ArrowRight, Twitter, Facebook, Instagram } from "lucide-react";
 import { useTransitionRouter } from "./PageTransition";
 import Gallery3D from "./Gallery3D";
 
@@ -14,15 +13,16 @@ export default function Hero() {
   ];
 
   return (
-    <section
-      id="home"
-      className="relative bg-[#07080A] text-white overflow-hidden w-full pt-20 sm:pt-24 pb-0"
-      style={{
-        display: 'flex',
-        flexDirection: 'column',
-        minHeight: '100vh',
-      }}
-    >
+    <>
+      <section
+        id="home"
+        className="relative bg-[#07080A] text-white overflow-hidden w-full pt-20 sm:pt-24 pb-0"
+        style={{
+          display: 'flex',
+          flexDirection: 'column',
+          minHeight: '100vh',
+        }}
+      >
       {/* Heavy textured/diagonal break background styling */}
       <div className="absolute inset-0 z-0 pointer-events-none opacity-20 bg-[radial-gradient(#1e293b_1px,transparent_1px)] [background-size:16px_16px]" />
       
@@ -58,7 +58,7 @@ export default function Hero() {
               
               {/* Secondary text - Brand Tagline */}
               <p className="font-display font-extrabold text-base sm:text-xl text-[#F5A623] tracking-wide uppercase italic mt-3 ml-1">
-                With ZZ Your Transport is Easy!!
+                Your Trusted Logistics Partner
               </p>
             </motion.div>
 
@@ -132,7 +132,7 @@ export default function Hero() {
               </div>
 
               <img
-                src="/images/zz-truck.png"
+                src="/images/zz-truck.webp"
                 alt="ZZ Transport Truck"
                 style={{
                   width: '100%',
@@ -151,54 +151,35 @@ export default function Hero() {
 
           </div>
 
+          </div>
+        </div>
+      </section>
+
+      <div style={{
+        width: '100%',
+        background: '#0A0A0A',
+        borderTop: '1px solid rgba(255,255,255,0.08)',
+        padding: '16px 60px',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'space-between',
+      }}>
+        <p style={{ color: '#9CA3AF', fontSize: '13px', maxWidth: '400px' }}>
+          All shipments are fully insured with real-time tracking and guaranteed on-time delivery across Australia.
+        </p>
+        <div style={{ width: '1px', height: '40px', background: 'rgba(255,255,255,0.2)' }}></div>
+        <button 
+          onClick={() => navigate("#services")}
+          style={{ background: 'transparent', border: '1px solid #F5A623', borderRadius: '999px', padding: '10px 28px', color: '#FFFFFF', fontSize: '13px', letterSpacing: '2px', cursor: 'pointer' }}
+        >
+          EXPLORE NOW →
+        </button>
+        <div style={{ display: 'flex', gap: '16px' }}>
+          <a href="https://www.facebook.com/ZZ-Transport-710069642377823/" style={{ color: '#9CA3AF' }}>f</a>
+          <a href="#" style={{ color: '#9CA3AF' }}>t</a>
+          <a href="#" style={{ color: '#9CA3AF' }}>in</a>
         </div>
       </div>
-
-      {/* Styled Bottom bar matching reference image */}
-      <div 
-        style={{
-          position: 'relative',
-          width: '100%',
-          borderTop: '1px solid rgba(255,255,255,0.1)',
-          padding: '16px 60px',
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'space-between',
-          marginTop: '12px',
-        }} 
-        className="z-10 flex-col md:flex-row gap-6"
-      >
-        {/* Left section: Small inline paragraph with gold separator */}
-        <div className="flex items-center text-center md:text-left">
-          <p className="font-sans text-xs text-gray-400 max-w-sm">
-            All shipments are fully insured with real-time tracking and guaranteed on-time delivery across Australia.
-          </p>
-          <div className="hidden md:block h-6 border-r border-[#F5A623] ml-6 opacity-80 shrink-0" />
-        </div>
-
-        {/* Center section: Outlined gold pill button */}
-        <div>
-          <button
-            onClick={() => navigate("#services")}
-            className="inline-flex items-center gap-2 border border-[#F5A623]/60 hover:border-[#F5A623] text-xs font-mono font-bold uppercase tracking-widest text-white hover:text-[#F5A623] px-8 py-3 rounded-full transition-all duration-300 hover:scale-105 active:scale-95 cursor-pointer"
-          >
-            Explore Now <ArrowRight className="h-3 w-3" />
-          </button>
-        </div>
-
-        {/* Right section: Gold/white social media icons */}
-        <div className="flex items-center gap-6">
-          <a href="#facebook" className="text-gray-400 hover:text-[#F5A623] transition-colors duration-200">
-            <Facebook className="h-4 w-4" />
-          </a>
-          <a href="#twitter" className="text-gray-400 hover:text-[#F5A623] transition-colors duration-200">
-            <Twitter className="h-4 w-4" />
-          </a>
-          <a href="#instagram" className="text-gray-400 hover:text-[#F5A623] transition-colors duration-200">
-            <Instagram className="h-4 w-4" />
-          </a>
-        </div>
-      </div>
-    </section>
+    </>
   );
 }
