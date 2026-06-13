@@ -41,7 +41,7 @@ export default function Hero() {
 
       {/* Main Grid Content */}
       <div
-        className="w-full flex items-center relative z-10 py-6 lg:py-0"
+        className="w-full flex items-center relative z-10 py-6 lg:py-0 hero-inner"
         style={{ 
           maxWidth: '100%', 
           paddingLeft: 60, 
@@ -53,7 +53,7 @@ export default function Hero() {
         <div className="w-full flex flex-col lg:flex-row items-center gap-12 lg:gap-8 hero-main-grid px-4 lg:px-[60px]">
           
           {/* Left Column (Content & Technical Stats Grid) */}
-          <div className="relative flex flex-col items-start text-left z-10 w-full lg:w-[42%] lg:pl-[60px] px-0 order-1 hero-left-col">
+          <div className="relative flex flex-col items-start text-left z-20 w-full lg:w-[42%] lg:pl-[60px] px-0 order-1 hero-left-col">
             
             {/* Headline - "ZZ TRANSPORT" with italic massive impact font */}
             <motion.div
@@ -77,13 +77,16 @@ export default function Hero() {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 1, delay: 0.3 }}
-              className="font-sans text-xs sm:text-sm text-gray-400 mt-6 leading-relaxed w-full hero-description"
+              className="font-sans text-sm sm:text-base md:text-lg text-gray-300 mt-4 sm:mt-6 leading-snug sm:leading-6 w-full hero-description"
+              style={{ maxWidth: '640px', marginBottom: 0 }}
             >
-              From ocean freight to air cargo, ZZ Transport Pty Ltd delivers your goods safely across Perth, Melbourne and beyond. Reliable, fast and fully insured.
+              <span className="block mb-0">From ocean freight to air cargo,</span>
+              <span className="block mb-0">ZZ Transport Pty Ltd delivers your goods safely across Perth, Melbourne and beyond.</span>
+              <span className="block">Reliable, fast and fully insured.</span>
             </motion.p>
 
             {/* Technical Spec Info (2x2 Grid Layout matching the reference image) */}
-            <div className="grid grid-cols-2 gap-x-12 gap-y-6 mt-10 w-full order-3 lg:order-none hero-stats-grid">
+            <div className="grid grid-cols-2 gap-x-12 gap-y-6 mt-10 w-full order-4 lg:order-none hero-stats-grid">
               {specs.map((spec, idx) => (
                 <motion.div
                   key={idx}
@@ -92,10 +95,10 @@ export default function Hero() {
                   transition={{ duration: 0.6, delay: 0.4 + idx * 0.1 }}
                   className="flex flex-col text-left"
                 >
-                  <span className="font-sans text-[11px] uppercase tracking-wider text-gray-500 font-medium">
+                  <span className="font-sans text-[11px] uppercase tracking-wider text-gray-500 font-medium hero-stat-label">
                     {spec.label}
                   </span>
-                  <span className="font-display font-bold text-2xl sm:text-3xl text-[#F5A623] tracking-tight mt-1">
+                  <span className="font-display font-bold text-2xl sm:text-3xl text-[#F5A623] tracking-tight mt-1 hero-stat-value">
                     {spec.value}
                   </span>
                 </motion.div>
@@ -103,7 +106,7 @@ export default function Hero() {
             </div>
 
             {/* Integrated Gallery3D inside Hero */}
-            <div className="order-4 lg:order-none hero-gallery-wrapper" style={{
+            <div className="order-3 lg:order-none hero-gallery-wrapper" style={{
               marginTop: '16px',
               width: '100%',
               maxWidth: '600px',
@@ -122,6 +125,7 @@ export default function Hero() {
               initial={{ opacity: 0, x: 150 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8, type: "spring", stiffness: 50 }}
+              className="hero-truck-wrapper"
               style={{
                 display: 'flex',
                 alignItems: 'flex-end',
@@ -176,7 +180,7 @@ export default function Hero() {
         </div>
       </section>
 
-      <div style={{
+      <div className="hero-bottom-bar" style={{
         width: '100%',
         background: '#0A0A0A',
         borderTop: '1px solid rgba(255,255,255,0.08)',
@@ -185,17 +189,18 @@ export default function Hero() {
         alignItems: 'center',
         justifyContent: 'space-between',
       }}>
-        <p style={{ color: '#9CA3AF', fontSize: '13px', maxWidth: '400px' }}>
+        <p className="hero-bottom-text" style={{ color: '#9CA3AF', fontSize: '13px', maxWidth: '400px' }}>
           All shipments are fully insured with real-time tracking and guaranteed on-time delivery across Australia.
         </p>
-        <div style={{ width: '1px', height: '40px', background: 'rgba(255,255,255,0.2)' }}></div>
+        <div className="hero-bottom-divider" style={{ width: '1px', height: '40px', background: 'rgba(255,255,255,0.2)' }}></div>
         <button 
           onClick={() => navigate("#services")}
+          className="hero-bottom-button"
           style={{ background: 'transparent', border: '1px solid #F5A623', borderRadius: '999px', padding: '10px 28px', color: '#FFFFFF', fontSize: '13px', letterSpacing: '2px', cursor: 'pointer' }}
         >
           EXPLORE NOW →
         </button>
-        <div style={{ display: 'flex', gap: '16px' }}>
+        <div className="hero-social-icons" style={{ display: 'flex', gap: '16px' }}>
           <a href="https://www.facebook.com/ZZ-Transport-710069642377823/" style={{ color: '#9CA3AF' }}>f</a>
           <a href="#" style={{ color: '#9CA3AF' }}>t</a>
           <a href="#" style={{ color: '#9CA3AF' }}>in</a>
@@ -203,47 +208,108 @@ export default function Hero() {
       </div>
 
       <style dangerouslySetInnerHTML={{ __html: `
-        @media (max-width: 1024px) {
-          .hero-main-grid {
-            flex-direction: column !important;
+        @media (max-width: 1023px) {
+          .hero-heading {
+            font-size: 16vw !important;
+            line-height: 0.88 !important;
+            overflow: hidden !important;
+            width: 100% !important;
           }
+
+          .hero-tagline {
+            font-size: 5.5vw !important;
+            margin-top: 8px !important;
+            white-space: nowrap !important;
+          }
+
+          .hero-description {
+            margin-top: 10px !important;
+            margin-bottom: 0 !important;
+            font-size: 15px !important;
+            line-height: 1.35 !important;
+            max-width: 100% !important;
+            width: 100% !important;
+            padding-left: 0 !important;
+            padding-right: 0 !important;
+          }
+
+          .hero-inner {
+            padding-left: 16px !important;
+            padding-right: 16px !important;
+            padding-top: 12px !important;
+          }
+
           .hero-left-col {
             display: contents !important;
-            order: 1 !important;
-            gap: 8px !important;
-            padding-top: 0 !important;
           }
+
           .hero-left-col > * {
             order: 1 !important;
           }
-          .hero-heading {
-            font-size: 18vw !important;
-            line-height: 0.9 !important;
-          }
-          .hero-tagline {
-            font-size: 5vw !important;
-            margin-top: 8px !important;
-          }
-          .hero-description {
-            margin-top: 12px !important;
-            font-size: 14px !important;
-          }
+
           .hero-right-col {
-            width: 100% !important;
             order: 2 !important;
-            margin-top: 0 !important;
+            overflow: visible !important;
+            margin-top: -20px !important;
             padding: 0 !important;
           }
+
+          .hero-truck-wrapper {
+            margin-left: 0 !important;
+          }
+
           .hero-gallery-wrapper {
-            order: 4 !important;
+            order: 3 !important;
+            margin-top: -10px !important;
           }
+
           .hero-stats-grid {
-            order: 5 !important;
+            order: 4 !important;
+            margin-top: 0 !important;
           }
+
           .hero-truck-img {
-            height: 280px !important;
-            width: 100% !important;
+            width: auto !important;
+            max-width: 100% !important;
+            height: 220px !important;
             object-fit: contain !important;
+            transform: scale(1.05) !important;
+            transform-origin: center center !important;
+          }
+
+          .hero-stat-label {
+            font-size: 9px !important;
+            white-space: nowrap !important;
+            letter-spacing: 0.5px !important;
+          }
+
+          .hero-stat-value {
+            font-size: 26px !important;
+          }
+
+          .hero-bottom-bar {
+            flex-direction: column !important;
+            padding: 12px 16px !important;
+            gap: 10px !important;
+          }
+
+          .hero-bottom-text {
+            font-size: 11px !important;
+            line-height: 1.5 !important;
+          }
+
+          .hero-bottom-divider {
+            display: none !important;
+          }
+
+          .hero-social-icons {
+            display: none !important;
+          }
+
+          .hero-bottom-button {
+            width: 100% !important;
+            justify-content: center !important;
+            text-align: center !important;
           }
         }
       `}} />
