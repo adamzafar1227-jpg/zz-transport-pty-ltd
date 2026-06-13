@@ -1,0 +1,6 @@
+{
+  "name": "ZZ Transport Pty Ltd",
+  "description": "Professional modern logistics and transport services across Australia, specializing in ocean freight, air freight, warehousing, and container transport.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
