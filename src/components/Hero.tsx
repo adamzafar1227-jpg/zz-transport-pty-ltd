@@ -35,9 +35,9 @@ export default function Hero() {
 
       {/* Main Grid Content */}
       <div
-        className="w-full flex items-center relative z-10 py-6 md:py-0 px-4 md:px-[60px] pt-5 flex-1 max-w-full"
+        className="w-full flex items-center relative z-10 py-2 md:py-0 px-4 md:px-[60px] pt-2 md:pt-5 flex-1 max-w-full"
       >
-        <div className="w-full flex flex-col md:flex-row md:flex-wrap items-center md:items-start gap-y-12 md:gap-y-0">
+        <div className="w-full flex flex-col md:flex-row md:flex-wrap items-center md:items-start gap-y-2 md:gap-y-0">
           
           {/* Left Column (Content & Technical Stats Grid) */}
           <div className="relative flex flex-col items-start text-left z-10 w-full md:w-[45%] order-1 px-0 md:pl-[60px]">
@@ -48,12 +48,12 @@ export default function Hero() {
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8, ease: "easeOut" }}
             >
-              <h1 className="font-display font-[900] text-5xl sm:text-7xl lg:text-[6rem] xl:text-[7rem] tracking-tighter uppercase italic leading-[0.85] text-white">
+              <h1 className="font-display font-[900] text-5xl md:text-8xl tracking-tighter uppercase italic leading-[0.85] text-white">
                 ZZ TRANSPORT
               </h1>
               
               {/* Secondary text - Brand Tagline */}
-              <p className="font-display font-extrabold text-base sm:text-xl text-[#F5A623] tracking-wide uppercase italic mt-3 ml-1">
+              <p className="font-display font-extrabold text-lg md:text-2xl text-[#F5A623] tracking-wide uppercase italic mt-1 md:mt-3 ml-1">
                 Your Trusted Logistics Partner
               </p>
             </motion.div>
@@ -63,35 +63,14 @@ export default function Hero() {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 1, delay: 0.3 }}
-              className="font-sans text-xs sm:text-sm text-gray-400 mt-6 leading-relaxed w-full"
+              className="font-sans text-sm md:text-base text-gray-400 mt-2 md:mt-6 leading-relaxed w-full"
             >
               From ocean freight to air cargo, ZZ Transport Pty Ltd delivers your goods safely across Perth, Melbourne and beyond. Reliable, fast and fully insured.
             </motion.p>
-
-            {/* Technical Spec Info (2x2 Grid Layout matching the reference image) */}
-            <div className="grid grid-cols-2 gap-x-12 gap-y-6 mt-10 w-full">
-              {specs.map((spec, idx) => (
-                <motion.div
-                  key={idx}
-                  initial={{ opacity: 0, y: 15 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.6, delay: 0.4 + idx * 0.1 }}
-                  className="flex flex-col text-left"
-                >
-                  <span className="font-sans text-[11px] uppercase tracking-wider text-gray-500 font-medium">
-                    {spec.label}
-                  </span>
-                  <span className="font-display font-bold text-2xl sm:text-3xl text-[#F5A623] tracking-tight mt-1">
-                    {spec.value}
-                  </span>
-                </motion.div>
-              ))}
-            </div>
-
           </div>
 
           {/* Right Column (Massive yellow Volvo Freight Truck) */}
-          <div className="relative flex justify-center md:justify-end items-center w-full md:w-[55%] order-2 md:order-2 mt-8 md:mt-0">
+          <div className="relative flex justify-center md:justify-end items-center w-full md:w-[55%] order-3 md:order-2 mt-2 md:mt-0">
             
             <motion.div
               initial={{ opacity: 0, x: 150 }}
@@ -100,7 +79,7 @@ export default function Hero() {
               className="flex items-end justify-center relative w-full md:ml-[-60px] pb-0"
             >
               {/* "SAFE | FAST | RELIABLE" callout label absolutely positioned OVER the truck image, top-right area */}
-              <div className="absolute top-[2%] right-[2%] hidden md:flex flex-col items-end z-25 pointer-events-none">
+              <div className="absolute top-[2%] right-[2%] hidden lg:flex flex-col items-end z-25 pointer-events-none">
                 <div className="flex items-center gap-1">
                   <div className="text-right">
                     <p className="text-[11px] text-gray-400 uppercase tracking-widest leading-none font-sans font-bold">ZZ Transport</p>
@@ -121,17 +100,7 @@ export default function Hero() {
                 loading="eager"
                 fetchPriority="high"
                 decoding="async"
-                style={{
-                  width: '100%',
-                  height: 'auto',
-                  objectFit: 'contain',
-                  background: 'transparent',
-                  border: 'none',
-                  borderRadius: '0',
-                  boxShadow: 'none',
-                  filter: 'drop-shadow(0 40px 80px rgba(245,166,35,0.3))',
-                  willChange: 'transform',
-                }}
+                className="w-full h-[200px] md:h-auto object-contain bg-transparent border-none rounded-none shadow-none filter drop-shadow-[0_40px_80px_rgba(245,166,35,0.3)] will-change-transform"
               />
 
             </motion.div>
@@ -139,12 +108,32 @@ export default function Hero() {
           </div>
 
           {/* Gallery — shows below truck on mobile, below stats on desktop */}
-          <div className="w-full md:w-[45%] order-3 md:order-3 mt-8 md:mt-10 md:pl-[60px] overflow-visible pt-2.5">
-            <div className="w-full max-w-[600px] mx-auto md:mx-0">
+          <div className="w-full md:w-[45%] order-4 md:order-3 mt-2 md:mt-10 md:pl-[60px] overflow-visible pt-1">
+            <div className="w-full max-w-[600px] mx-auto md:mx-0 h-[180px] md:h-auto overflow-visible">
               <Gallery3D 
                 compact={true} 
               />
             </div>
+          </div>
+
+          {/* Stats Grid - Moves below gallery on mobile */}
+          <div className="w-full md:w-[45%] order-5 md:order-3 md:pl-[60px] grid grid-cols-2 gap-4 mt-2 md:mt-10">
+            {specs.map((spec, idx) => (
+              <motion.div
+                key={idx}
+                initial={{ opacity: 0, y: 15 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.4 + idx * 0.1 }}
+                className="flex flex-col text-left"
+              >
+                <span className="font-sans text-[10px] md:text-[11px] uppercase tracking-wider text-gray-500 font-medium">
+                  {spec.label}
+                </span>
+                <span className="font-display font-bold text-xl md:text-3xl text-[#F5A623] tracking-tight mt-0.5 md:mt-1">
+                  {spec.value}
+                </span>
+              </motion.div>
+            ))}
           </div>
 
           </div>

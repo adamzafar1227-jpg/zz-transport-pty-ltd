@@ -54,8 +54,8 @@ export default function Gallery3D({ compact = false }: Gallery3DProps) {
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
-  const cardWidth = isMobile ? (window.innerWidth - 32) : (compact ? 280 : 420);
-  const cardHeight = isMobile ? 200 : (compact ? 160 : 240);
+  const cardWidth = isMobile ? 220 : (compact ? 280 : 420);
+  const cardHeight = isMobile ? 140 : (compact ? 160 : 240);
 
   // Auto-rotate logic: rotates every 3 seconds
   useEffect(() => {
@@ -110,10 +110,10 @@ export default function Gallery3D({ compact = false }: Gallery3DProps) {
       <div 
         className="relative w-full"
         style={{
-          height: isMobile ? `${cardHeight}px` : (compact ? '180px' : '260px'),
+          height: isMobile ? '180px' : (compact ? '180px' : '260px'),
           display: 'flex',
           justifyContent: 'center',
-          perspective: isMobile ? 'none' : '1200px',
+          perspective: isMobile ? '600px' : '1200px',
         }}
       >
         {/* Carousel Ring */}
@@ -121,8 +121,8 @@ export default function Gallery3D({ compact = false }: Gallery3DProps) {
           className="relative w-full h-full"
           style={{ 
             transition: 'transform 0.8s',
-            transformStyle: isMobile ? "flat" : "preserve-3d",
-            transform: isMobile ? "none" : `rotateY(${-activeIndex * angleStep}deg)` 
+            transformStyle: "preserve-3d",
+            transform: `rotateY(${-activeIndex * angleStep}deg)` 
           }}
         >
           {images.map((item, index) => {
@@ -146,8 +146,8 @@ export default function Gallery3D({ compact = false }: Gallery3DProps) {
               zIndexValue = 30;
               filterValue = "none";
             } else if (diff === 1) {
-              scaleValue = 0.75; 
-              opacityValue = 0.60;
+              scaleValue = 0.7; 
+              opacityValue = 0.5;
               zIndexValue = 20;
               filterValue = "blur(1px)";
             } else if (diff === 2) {
@@ -167,16 +167,16 @@ export default function Gallery3D({ compact = false }: Gallery3DProps) {
             return (
               <div
                 key={index}
-                className={`transition-all duration-800 ${isMobile ? "relative w-full" : "absolute left-1/2 top-1/2"}`}
+                className="absolute left-1/2 top-1/2 transition-all duration-800"
                 style={{
-                  display: isMobile ? (isActive ? 'block' : 'none') : 'block',
-                  width: isMobile ? '100%' : `${cardWidth}px`,
+                  display: isMobile ? (diff <= 1 ? 'block' : 'none') : 'block',
+                  width: `${cardWidth}px`,
                   height: `${cardHeight}px`,
-                  marginLeft: isMobile ? '0' : `${-(cardWidth / 2)}px`,
-                  marginTop: isMobile ? '0' : `${-(cardHeight / 2)}px`,
+                  marginLeft: `${-(cardWidth / 2)}px`,
+                  marginTop: `${-(cardHeight / 2)}px`,
                   // True 3D projection placement using rotateY & translateZ
-                  transform: isMobile ? 'none' : `rotateY(${itemAngle}deg) translateZ(${compact ? 260 : 400}px) scale(${scaleValue})`,
-                  opacity: isMobile ? 1 : opacityValue,
+                  transform: `rotateY(${itemAngle}deg) translateZ(${isMobile ? 250 : 400}px) scale(${scaleValue})`,
+                  opacity: opacityValue,
                   zIndex: zIndexValue,
                   backfaceVisibility: "visible",
                 }}
@@ -234,7 +234,7 @@ export default function Gallery3D({ compact = false }: Gallery3DProps) {
           flexDirection: 'column',
           alignItems: 'center',
           justifyContent: 'center',
-          marginTop: '16px',
+          marginTop: isMobile ? '0px' : '16px',
           position: 'relative',
           zIndex: 10,
         }}
