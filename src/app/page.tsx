@@ -1,18 +1,22 @@
 "use client";
-import Hero from '@/components/Hero'
-import HomeWhyUs from '@/components/HomeWhyUs'
-import HomeHowItWorks from '@/components/HomeHowItWorks'
-import HomeTestimonials from '@/components/HomeTestimonials'
-import HomeQuoteForm from '@/components/HomeQuoteForm'
+import { lazy, Suspense } from 'react';
+
+const Hero = lazy(() => import('@/components/Hero'));
+const HomeWhyUs = lazy(() => import('@/components/HomeWhyUs'));
+const HomeHowItWorks = lazy(() => import('@/components/HomeHowItWorks'));
+const HomeTestimonials = lazy(() => import('@/components/HomeTestimonials'));
+const HomeQuoteForm = lazy(() => import('@/components/HomeQuoteForm'));
 
 export default function Home() {
   return (
     <main>
-      <Hero />
-      <HomeWhyUs />
-      <HomeHowItWorks />
-      <HomeTestimonials />
-      <HomeQuoteForm />
+      <Suspense fallback={<div className="bg-[#0A0A0A] min-h-screen" />}>
+        <Hero />
+        <HomeWhyUs />
+        <HomeHowItWorks />
+        <HomeTestimonials />
+        <HomeQuoteForm />
+      </Suspense>
     </main>
   )
 }

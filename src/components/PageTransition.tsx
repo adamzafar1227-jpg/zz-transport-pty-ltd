@@ -94,6 +94,11 @@ export default function PageTransition({
           exit={{ opacity: 0 }}
           transition={{ duration: 0.3, delay: 0.2 }}
           className="w-full flex-grow flex flex-col min-h-screen"
+          style={{
+            willChange: 'transform',
+            transform: 'translateZ(0)',
+            backfaceVisibility: 'hidden'
+          }}
         >
           {children}
         </motion.div>

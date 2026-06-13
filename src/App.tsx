@@ -1,15 +1,17 @@
+import { lazy, Suspense } from "react";
 import Navbar from "./components/Navbar";
-import Hero from "./components/Hero";
-import Services from "./components/Services";
-import Fleet from "./components/Fleet";
-import AboutUs from "./components/AboutUs";
-import HomeWhyUs from "./components/HomeWhyUs";
-import HomeHowItWorks from "./components/HomeHowItWorks";
-import Coverage from "./components/Coverage";
-import HomeTestimonials from "./components/HomeTestimonials";
-import HomeQuoteForm from "./components/HomeQuoteForm";
 import Footer from "./components/Footer";
 import PageTransition, { TransitionProvider, useTransitionRouter } from "./components/PageTransition";
+
+const Hero = lazy(() => import("./components/Hero"));
+const Services = lazy(() => import("./components/Services"));
+const Fleet = lazy(() => import("./components/Fleet"));
+const AboutUs = lazy(() => import("./components/AboutUs"));
+const HomeWhyUs = lazy(() => import("./components/HomeWhyUs"));
+const HomeHowItWorks = lazy(() => import("./components/HomeHowItWorks"));
+const Coverage = lazy(() => import("./components/Coverage"));
+const HomeTestimonials = lazy(() => import("./components/HomeTestimonials"));
+const HomeQuoteForm = lazy(() => import("./components/HomeQuoteForm"));
 
 function ActivePage() {
   const { currentPath } = useTransitionRouter();
@@ -63,7 +65,9 @@ function AppContent() {
 
       <main className="flex-grow w-full">
         <PageTransition routeKey={currentPath}>
-          <ActivePage />
+          <Suspense fallback={<div className="bg-[#0A0A0A] min-h-screen" />}>
+            <ActivePage />
+          </Suspense>
         </PageTransition>
       </main>
 
