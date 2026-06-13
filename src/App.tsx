@@ -1,4 +1,4 @@
-import { lazy, Suspense } from "react";
+import { lazy, Suspense, useEffect } from "react";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import PageTransition, { TransitionProvider, useTransitionRouter } from "./components/PageTransition";
@@ -81,6 +81,10 @@ function AppContent() {
 }
 
 export default function App() {
+  useEffect(() => {
+    document.body.style.backgroundColor = '#0A0A0A';
+  }, []);
+
   return (
     <TransitionProvider>
       <AppContent />

@@ -84,20 +84,32 @@ export default function PageTransition({
     }
   }, [isPending]);
 
+  const variants = {
+    initial: { opacity: 0 },
+    animate: { opacity: 1 },
+    exit: { opacity: 0 },
+  };
+
+  const transition = {
+    duration: 0.3,
+    ease: 'easeInOut',
+  };
+
   return (
     <div className="relative w-full overflow-hidden min-h-screen">
       <AnimatePresence mode="wait">
         <motion.div
           key={routeKey}
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          exit={{ opacity: 0 }}
-          transition={{ duration: 0.3, delay: 0.2 }}
+          variants={variants}
+          initial="initial"
+          animate="animate"
+          exit="exit"
+          transition={transition}
           className="w-full flex-grow flex flex-col min-h-screen"
           style={{
-            willChange: 'transform',
-            transform: 'translateZ(0)',
-            backfaceVisibility: 'hidden'
+            backgroundColor: '#0A0A0A',
+            minHeight: '100vh',
+            willChange: 'opacity',
           }}
         >
           {children}
