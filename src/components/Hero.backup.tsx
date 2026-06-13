@@ -50,10 +50,10 @@ export default function Hero() {
           flex: 1,
         }}
       >
-        <div className="w-full flex flex-col lg:flex-row items-center gap-12 lg:gap-8 hero-main-grid px-4 lg:px-[60px]">
+        <div className="w-full flex flex-col lg:flex-row items-center gap-12 lg:gap-8">
           
           {/* Left Column (Content & Technical Stats Grid) */}
-          <div className="relative flex flex-col items-start text-left z-10 w-full lg:w-[42%] lg:pl-[60px] px-0 order-1 hero-left-col">
+          <div className="relative flex flex-col items-start text-left z-10 w-full lg:w-[42%] lg:pl-[60px] px-0">
             
             {/* Headline - "ZZ TRANSPORT" with italic massive impact font */}
             <motion.div
@@ -83,7 +83,7 @@ export default function Hero() {
             </motion.p>
 
             {/* Technical Spec Info (2x2 Grid Layout matching the reference image) */}
-            <div className="grid grid-cols-2 gap-x-12 gap-y-6 mt-10 w-full order-3 lg:order-none hero-stats-grid">
+            <div className="grid grid-cols-2 gap-x-12 gap-y-6 mt-10 w-full">
               {specs.map((spec, idx) => (
                 <motion.div
                   key={idx}
@@ -103,7 +103,7 @@ export default function Hero() {
             </div>
 
             {/* Integrated Gallery3D inside Hero */}
-            <div className="order-4 lg:order-none hero-gallery-wrapper" style={{
+            <div style={{
               marginTop: '16px',
               width: '100%',
               maxWidth: '600px',
@@ -116,7 +116,7 @@ export default function Hero() {
           </div>
 
           {/* Right Column (Massive yellow Volvo Freight Truck) */}
-          <div className="relative flex justify-center lg:justify-end items-center w-full lg:w-[55%] order-2 hero-right-col">
+          <div className="relative flex justify-center lg:justify-end items-center w-full lg:w-[55%]">
             
             <motion.div
               initial={{ opacity: 0, x: 150 }}
@@ -149,7 +149,6 @@ export default function Hero() {
               </div>
 
               <img
-                className="hero-truck-img"
                 src="/images/zz-truck.webp"
                 alt="ZZ Transport Truck"
                 loading="eager"
@@ -201,35 +200,6 @@ export default function Hero() {
           <a href="#" style={{ color: '#9CA3AF' }}>in</a>
         </div>
       </div>
-
-      <style dangerouslySetInnerHTML={{ __html: `
-        @media (max-width: 1024px) {
-          .hero-main-grid {
-            flex-direction: column !important;
-          }
-          .hero-left-col {
-            display: contents !important;
-            order: 1 !important;
-          }
-          .hero-left-col > * {
-            order: 1 !important;
-          }
-          .hero-right-col {
-            width: 100% !important;
-            order: 2 !important;
-          }
-          .hero-gallery-wrapper {
-            order: 4 !important;
-          }
-          .hero-stats-grid {
-            order: 5 !important;
-          }
-          .hero-truck-img {
-            height: 220px !important;
-            object-fit: contain !important;
-          }
-        }
-      `}} />
     </>
   );
 }
