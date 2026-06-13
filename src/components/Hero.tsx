@@ -37,10 +37,10 @@ export default function Hero() {
       <div
         className="w-full flex items-center relative z-10 py-2 md:py-0 px-4 md:px-[60px] pt-4 md:pt-5 flex-1 max-w-full"
       >
-        <div className="w-full flex flex-col md:flex-row md:flex-wrap items-center md:items-start gap-y-4 md:gap-y-0">
+        <div className="w-full flex flex-col md:flex-row md:flex-wrap items-start gap-y-4 md:gap-y-0">
           
-          {/* Left Column (Content & Technical Stats Grid) */}
-          <div className="relative flex flex-col items-start text-left z-10 w-full md:w-[45%] order-1 px-0 md:pl-[60px]">
+          {/* LEFT COLUMN: Content (Heading, Tagline, Description) - order-1 on both mobile & desktop */}
+          <div className="relative flex flex-col items-start text-left z-10 w-full md:w-[45%] order-1 px-0">
             
             {/* Headline - "ZZ TRANSPORT" with italic massive impact font */}
             <motion.div
@@ -52,13 +52,13 @@ export default function Hero() {
                 ZZ TRANSPORT
               </h1>
               
-              {/* Secondary text - Brand Tagline */}
+              {/* Secondary text - Brand Tagline (Gold) */}
               <p className="font-display font-extrabold text-base md:text-2xl text-[#F5A623] tracking-wide uppercase italic mt-2 md:mt-3 ml-1">
                 Your Trusted Logistics Partner
               </p>
             </motion.div>
 
-            {/* ZZ Transport Branded Support Copywrite */}
+            {/* Description Text */}
             <motion.p
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
@@ -69,14 +69,14 @@ export default function Hero() {
             </motion.p>
           </div>
 
-          {/* Right Column (Massive yellow Volvo Freight Truck) */}
-          <div className="relative flex justify-center md:justify-end items-center w-full md:w-[55%] order-2 md:order-2 mt-2 md:mt-0">
+          {/* RIGHT COLUMN: Truck Image - order-2 on mobile (after content), order-2 on desktop (right side) */}
+          <div className="relative flex justify-center md:justify-end items-center w-full md:w-[55%] order-2 mt-2 md:mt-0 md:pl-6">
             
             <motion.div
               initial={{ opacity: 0, x: 150 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8, type: "spring", stiffness: 50 }}
-              className="flex items-end justify-center relative w-full md:ml-[-60px] pb-0"
+              className="flex items-end justify-center relative w-full pb-0"
             >
               {/* "SAFE | FAST | RELIABLE" callout label absolutely positioned OVER the truck image, top-right area */}
               <div className="absolute top-[2%] right-[2%] hidden md:flex flex-col items-end z-25 pointer-events-none">
@@ -107,17 +107,15 @@ export default function Hero() {
 
           </div>
 
-          {/* Gallery — shows below truck on mobile, below stats on desktop */}
-          <div className="w-full md:w-[45%] order-3 md:order-3 mt-4 md:mt-10 md:pl-[60px] overflow-visible pt-1 mb-4 md:mb-0">
-            <div className="w-full max-w-[600px] mx-auto md:mx-0 h-[160px] md:h-auto overflow-visible">
-              <Gallery3D 
-                compact={true} 
-              />
+          {/* GALLERY: order-3 on mobile (after truck), order-4 on desktop (below stats in left column) */}
+          <div className="w-full md:w-[45%] order-3 md:order-4 mt-4 md:mt-6 overflow-visible">
+            <div className="w-full max-w-[600px] mx-auto md:mx-0 h-[160px] md:h-[200px] overflow-visible">
+              <Gallery3D compact={true} />
             </div>
           </div>
 
-          {/* Stats Grid - Moves below gallery on mobile */}
-          <div className="w-full md:w-[45%] order-4 md:order-3 md:pl-[60px] grid grid-cols-2 gap-4 mt-4 md:mt-10">
+          {/* STATS: order-4 on mobile (after gallery), order-3 on desktop (before gallery in left column) */}
+          <div className="w-full md:w-[45%] order-4 md:order-3 grid grid-cols-2 gap-4 mt-4 md:mt-6">
             {specs.map((spec, idx) => (
               <motion.div
                 key={idx}
